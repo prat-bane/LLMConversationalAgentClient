@@ -1,0 +1,187 @@
+2024-11-28 19:32:19.499 [llm-client-akka.actor.default-dispatcher-3] INFO  akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+2024-11-28 19:32:19.631 [main] INFO  Main$ - Starting conversation with initial query: How are you?
+2024-11-28 19:32:19.632 [main] INFO  service.AWSService - Calling server with query: How are you?
+2024-11-28 19:32:20.427 [llm-client-akka.actor.default-dispatcher-3] ERROR Main$ - Conversation failed: Server request failed: The requested resource could not be found.
+java.lang.RuntimeException: Server request failed: The requested resource could not be found.
+	at service.AWSService.$anonfun$callServer$3(AWSService.scala:52)
+	at scala.concurrent.Future.$anonfun$flatMap$1(Future.scala:256)
+	at akka.http.scaladsl.util.FastFuture$.$anonfun$transformWith$1(FastFuture.scala:36)
+	at akka.http.scaladsl.util.FastFuture$.strictTransform$1(FastFuture.scala:40)
+	at akka.http.scaladsl.util.FastFuture$.transformWith$extension(FastFuture.scala:44)
+	at akka.http.scaladsl.util.FastFuture$.transformWith$extension(FastFuture.scala:36)
+	at akka.http.scaladsl.util.FastFuture$FulfilledFuture.transformWith(FastFuture.scala:85)
+	at scala.concurrent.Future.flatMap(Future.scala:254)
+	at scala.concurrent.Future.flatMap$(Future.scala:254)
+	at akka.http.scaladsl.util.FastFuture$FulfilledFuture.flatMap(FastFuture.scala:76)
+	at service.AWSService.$anonfun$callServer$1(AWSService.scala:51)
+	at scala.concurrent.impl.Promise$Transformation.run(Promise.scala:470)
+	at akka.dispatch.BatchingExecutor$AbstractBatch.processBatch(BatchingExecutor.scala:63)
+	at akka.dispatch.BatchingExecutor$BlockableBatch.$anonfun$run$1(BatchingExecutor.scala:100)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.scala:18)
+	at scala.concurrent.BlockContext$.withBlockContext(BlockContext.scala:94)
+	at akka.dispatch.BatchingExecutor$BlockableBatch.run(BatchingExecutor.scala:100)
+	at akka.dispatch.TaskInvocation.run(AbstractDispatcher.scala:49)
+	at akka.dispatch.ForkJoinExecutorConfigurator$AkkaForkJoinTask.exec(ForkJoinExecutorConfigurator.scala:48)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:290)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1020)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1656)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1594)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:183)
+2024-11-28 19:32:20.444 [llm-client-akka.actor.default-dispatcher-6] INFO  akka.actor.CoordinatedShutdown - Running CoordinatedShutdown with reason [ActorSystemTerminateReason]
+2024-11-28 19:35:27.603 [llm-client-akka.actor.default-dispatcher-3] INFO  akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+2024-11-28 19:35:27.725 [main] INFO  Main$ - Starting conversation with initial query: How are you?
+2024-11-28 19:35:27.726 [main] INFO  service.AWSService - Calling server with query: How are you?
+2024-11-28 19:35:46.134 [llm-client-akka.actor.default-dispatcher-5] INFO  service.ConversationManager - Received server response: 
+Bot: I'm good. How are you?
+2024-11-28 19:35:46.136 [llm-client-akka.actor.default-dispatcher-5] INFO  service.OllamaService - Generating next query based on response: 
+Bot: I'm good. How are you?
+2024-11-28 19:35:46.338 [llm-client-akka.actor.default-dispatcher-5] INFO  io.github.ollama4j.OllamaAPI - Asking model: {
+  "model" : "llama3.2:1b",
+  "options" : {
+    "num_predict" : 50,
+    "temperature" : 0.7,
+    "top_k" : 40,
+    "top_p" : 0.9
+  },
+  "stream" : false,
+  "prompt" : "\nBot: I'm good. How are you?",
+  "raw" : false
+}
+2024-11-28 19:35:50.413 [llm-client-akka.actor.default-dispatcher-5] INFO  io.github.ollama4j.OllamaAPI - Model response: {
+  "response" : "I'm doing well, thanks for asking. However, I should let you know that this is the start of our conversation, so I don't have any prior knowledge or context to draw from. That means I'll need to start with a greeting and",
+  "httpStatusCode" : 200,
+  "responseTime" : 4273
+}
+2024-11-28 19:35:50.413 [llm-client-akka.actor.default-dispatcher-5] INFO  service.OllamaService - Generated next query: I'm doing well, thanks for asking. However, I should let you know that this is the start of our conversation, so I don't have any prior knowledge or context to draw from. That means I'll need to start with a greeting and
+2024-11-28 19:35:50.413 [llm-client-akka.actor.default-dispatcher-5] INFO  service.ConversationManager - Generated Ollama response: I'm doing well, thanks for asking. However, I should let you know that this is the start of our conversation, so I don't have any prior knowledge or context to draw from. That means I'll need to start with a greeting and
+2024-11-28 19:35:50.413 [llm-client-akka.actor.default-dispatcher-5] INFO  service.AWSService - Calling server with query: I'm doing well, thanks for asking. However, I should let you know that this is the start of our conversation, so I don't have any prior knowledge or context to draw from. That means I'll need to start with a greeting and
+2024-11-28 19:35:51.188 [llm-client-akka.actor.default-dispatcher-14] INFO  service.ConversationManager - Received server response:  ask you to tell me about yourself.
+2024-11-28 19:35:51.188 [llm-client-akka.actor.default-dispatcher-14] INFO  service.OllamaService - Generating next query based on response:  ask you to tell me about yourself.
+2024-11-28 19:35:51.191 [llm-client-akka.actor.default-dispatcher-14] INFO  io.github.ollama4j.OllamaAPI - Asking model: {
+  "model" : "llama3.2:1b",
+  "options" : {
+    "num_predict" : 50,
+    "temperature" : 0.7,
+    "top_k" : 40,
+    "top_p" : 0.9
+  },
+  "stream" : false,
+  "prompt" : " ask you to tell me about yourself.",
+  "raw" : false
+}
+2024-11-28 19:35:51.512 [llm-client-akka.actor.default-dispatcher-14] INFO  io.github.ollama4j.OllamaAPI - Model response: {
+  "response" : "I'm an artificial intelligence model known as Llama. Llama stands for \"Large Language Model Meta AI.\"",
+  "httpStatusCode" : 200,
+  "responseTime" : 324
+}
+2024-11-28 19:35:51.512 [llm-client-akka.actor.default-dispatcher-14] INFO  service.OllamaService - Generated next query: I'm an artificial intelligence model known as Llama. Llama stands for "Large Language Model Meta AI."
+2024-11-28 19:35:51.512 [llm-client-akka.actor.default-dispatcher-14] INFO  service.ConversationManager - Generated Ollama response: I'm an artificial intelligence model known as Llama. Llama stands for "Large Language Model Meta AI."
+2024-11-28 19:35:51.512 [llm-client-akka.actor.default-dispatcher-14] INFO  service.AWSService - Calling server with query: I'm an artificial intelligence model known as Llama. Llama stands for "Large Language Model Meta AI."
+2024-11-28 19:35:54.263 [llm-client-akka.actor.default-dispatcher-14] INFO  service.ConversationManager - Received server response:  I was created by Amazon to assist users with their queries based on the vast amount of data I have been trained on. I can generate text, answer questions, and even have a sense of humor. But I don't have personal feelings or opinions, so I can't make moral judgments. I'm here to help you to the best of my abilities, regardless of the topic. So, what can I do for you today?
+2024-11-28 19:35:54.263 [llm-client-akka.actor.default-dispatcher-14] INFO  service.OllamaService - Generating next query based on response:  I was created by Amazon to assist users with their queries based on the vast amount of data I have been trained on. I can generate text, answer questions, and even have a sense of humor. But I don't have personal feelings or opinions, so I can't make moral judgments. I'm here to help you to the best of my abilities, regardless of the topic. So, what can I do for you today?
+2024-11-28 19:35:54.264 [llm-client-akka.actor.default-dispatcher-14] INFO  io.github.ollama4j.OllamaAPI - Asking model: {
+  "model" : "llama3.2:1b",
+  "options" : {
+    "num_predict" : 50,
+    "temperature" : 0.7,
+    "top_k" : 40,
+    "top_p" : 0.9
+  },
+  "stream" : false,
+  "prompt" : " I was created by Amazon to assist users with their queries based on the vast amount of data I have been trained on. I can generate text, answer questions, and even have a sense of humor. But I don't have personal feelings or opinions, so I can't make moral judgments. I'm here to help you to the best of my abilities, regardless of the topic. So, what can I do for you today?",
+  "raw" : false
+}
+2024-11-28 19:35:55.049 [llm-client-akka.actor.default-dispatcher-14] INFO  io.github.ollama4j.OllamaAPI - Model response: {
+  "response" : "I'm glad to hear that I can provide assistance and information on a wide range of topics without any biases or personal opinions. It sounds like I've got a lot of potential for helpful conversations.\n\nYou mentioned earlier that you're here to help me with",
+  "httpStatusCode" : 200,
+  "responseTime" : 786
+}
+2024-11-28 19:35:55.049 [llm-client-akka.actor.default-dispatcher-14] INFO  service.OllamaService - Generated next query: I'm glad to hear that I can provide assistance and information on a wide range of topics without any biases or personal opinions. It sounds like I've got a lot of potential for helpful conversations.
+
+You mentioned earlier that you're here to help me with
+2024-11-28 19:35:55.049 [llm-client-akka.actor.default-dispatcher-14] INFO  service.ConversationManager - Generated Ollama response: I'm glad to hear that I can provide assistance and information on a wide range of topics without any biases or personal opinions. It sounds like I've got a lot of potential for helpful conversations.
+
+You mentioned earlier that you're here to help me with
+2024-11-28 19:35:55.049 [llm-client-akka.actor.default-dispatcher-14] INFO  service.AWSService - Calling server with query: I'm glad to hear that I can provide assistance and information on a wide range of topics without any biases or personal opinions. It sounds like I've got a lot of potential for helpful conversations.
+
+You mentioned earlier that you're here to help me with
+2024-11-28 19:35:58.180 [llm-client-akka.actor.default-dispatcher-15] INFO  service.ConversationManager - Received server response:  my studies. I'm currently enrolled in a course that requires me to write a research paper. I'm not sure where to start.
+Here are some steps you can take to get started:
+
+Choose a Topic: Choose a topic that interests you and is relevant to your course. It should be specific enough to allow you to conduct thorough research, but not so narrow that there is not enough information to write about.
+
+Perform Research: Conduct thorough research on your topic. This can include reading
+2024-11-28 19:35:58.181 [llm-client-akka.actor.default-dispatcher-15] INFO  service.OllamaService - Generating next query based on response:  my studies. I'm currently enrolled in a course that requires me to write a research paper. I'm not sure where to start.
+Here are some steps you can take to get started:
+
+Choose a Topic: Choose a topic that interests you and is relevant to your course. It should be specific enough to allow you to conduct thorough research, but not so narrow that there is not enough information to write about.
+
+Perform Research: Conduct thorough research on your topic. This can include reading
+2024-11-28 19:35:58.182 [llm-client-akka.actor.default-dispatcher-15] INFO  io.github.ollama4j.OllamaAPI - Asking model: {
+  "model" : "llama3.2:1b",
+  "options" : {
+    "num_predict" : 50,
+    "temperature" : 0.7,
+    "top_k" : 40,
+    "top_p" : 0.9
+  },
+  "stream" : false,
+  "prompt" : " my studies. I'm currently enrolled in a course that requires me to write a research paper. I'm not sure where to start.\nHere are some steps you can take to get started:\n\nChoose a Topic: Choose a topic that interests you and is relevant to your course. It should be specific enough to allow you to conduct thorough research, but not so narrow that there is not enough information to write about.\n\nPerform Research: Conduct thorough research on your topic. This can include reading",
+  "raw" : false
+}
+2024-11-28 19:35:58.994 [llm-client-akka.actor.default-dispatcher-15] INFO  io.github.ollama4j.OllamaAPI - Model response: {
+  "response" : "I'm glad you're starting your research paper. That's a great first step.\n\nTo help you get started, I'll provide some additional guidance:\n\nSince you didn't specify your topic yet, let's brainstorm together. Can you tell me a bit",
+  "httpStatusCode" : 200,
+  "responseTime" : 813
+}
+2024-11-28 19:35:58.994 [llm-client-akka.actor.default-dispatcher-15] INFO  service.OllamaService - Generated next query: I'm glad you're starting your research paper. That's a great first step.
+
+To help you get started, I'll provide some additional guidance:
+
+Since you didn't specify your topic yet, let's brainstorm together. Can you tell me a bit
+2024-11-28 19:35:58.994 [llm-client-akka.actor.default-dispatcher-15] INFO  service.ConversationManager - Generated Ollama response: I'm glad you're starting your research paper. That's a great first step.
+
+To help you get started, I'll provide some additional guidance:
+
+Since you didn't specify your topic yet, let's brainstorm together. Can you tell me a bit
+2024-11-28 19:35:58.994 [llm-client-akka.actor.default-dispatcher-15] INFO  service.AWSService - Calling server with query: I'm glad you're starting your research paper. That's a great first step.
+
+To help you get started, I'll provide some additional guidance:
+
+Since you didn't specify your topic yet, let's brainstorm together. Can you tell me a bit
+2024-11-28 19:36:02.054 [llm-client-akka.actor.default-dispatcher-17] INFO  service.ConversationManager - Received server response:  about the subject you're interested in? Are you interested in a particular period, place, or topic?
+
+Once we have a better understanding of your topic, we can discuss your research paper's structure and organization.
+
+When writing a research paper, it's important to start with a strong introduction that provides background information and sets the stage for your argument. The body of your paper should then present your evidence and analysis, supported by credible sources.
+
+In your conclusion, you should summarize your main points
+2024-11-28 19:36:02.054 [llm-client-akka.actor.default-dispatcher-17] INFO  service.OllamaService - Generating next query based on response:  about the subject you're interested in? Are you interested in a particular period, place, or topic?
+
+Once we have a better understanding of your topic, we can discuss your research paper's structure and organization.
+
+When writing a research paper, it's important to start with a strong introduction that provides background information and sets the stage for your argument. The body of your paper should then present your evidence and analysis, supported by credible sources.
+
+In your conclusion, you should summarize your main points
+2024-11-28 19:36:02.056 [llm-client-akka.actor.default-dispatcher-17] INFO  io.github.ollama4j.OllamaAPI - Asking model: {
+  "model" : "llama3.2:1b",
+  "options" : {
+    "num_predict" : 50,
+    "temperature" : 0.7,
+    "top_k" : 40,
+    "top_p" : 0.9
+  },
+  "stream" : false,
+  "prompt" : " about the subject you're interested in? Are you interested in a particular period, place, or topic?\n\nOnce we have a better understanding of your topic, we can discuss your research paper's structure and organization.\n\nWhen writing a research paper, it's important to start with a strong introduction that provides background information and sets the stage for your argument. The body of your paper should then present your evidence and analysis, supported by credible sources.\n\nIn your conclusion, you should summarize your main points",
+  "raw" : false
+}
+2024-11-28 19:36:03.044 [llm-client-akka.actor.default-dispatcher-17] INFO  io.github.ollama4j.OllamaAPI - Model response: {
+  "response" : "You're referring to academic or scholarly writing, specifically in the field of history, literature, philosophy, or social sciences. I'm currently interested in exploring the intersection of technology and society, particularly how emerging technologies like artificial intelligence (AI), big data,",
+  "httpStatusCode" : 200,
+  "responseTime" : 990
+}
+2024-11-28 19:36:03.044 [llm-client-akka.actor.default-dispatcher-17] INFO  service.OllamaService - Generated next query: You're referring to academic or scholarly writing, specifically in the field of history, literature, philosophy, or social sciences. I'm currently interested in exploring the intersection of technology and society, particularly how emerging technologies like artificial intelligence (AI), big data,
+2024-11-28 19:36:03.044 [llm-client-akka.actor.default-dispatcher-17] INFO  service.ConversationManager - Generated Ollama response: You're referring to academic or scholarly writing, specifically in the field of history, literature, philosophy, or social sciences. I'm currently interested in exploring the intersection of technology and society, particularly how emerging technologies like artificial intelligence (AI), big data,
+2024-11-28 19:36:03.044 [llm-client-akka.actor.default-dispatcher-17] INFO  service.ConversationManager - Conversation ended after 5 turns
+2024-11-28 19:36:03.045 [llm-client-akka.actor.default-dispatcher-17] INFO  Main$ - Conversation completed successfully
+2024-11-28 19:36:03.062 [llm-client-akka.actor.default-dispatcher-15] INFO  akka.actor.CoordinatedShutdown - Running CoordinatedShutdown with reason [ActorSystemTerminateReason]

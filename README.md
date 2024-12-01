@@ -1,6 +1,10 @@
 # LLM Conversational Agent Client
 
+### Author : Pratyay Banerjee
+### Email : pbane8@uic.edu
+### Youtube video : [https://youtu.be/1tyuYzvIcBE](https://youtu.be/1tyuYzvIcBE)
 A Scala-based client implementation for interacting with the LLM Conversational Agent Server. This client application communicates with a server endpoint and integrates with Ollama for local LLM processing.
+
 
 ## Related Applications
 - [LLM Conversational Agent Server](https://github.com/prat-bane/LLMConversationalAgent) - Server component that connects to AWS Bedrock

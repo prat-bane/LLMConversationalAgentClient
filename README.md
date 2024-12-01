@@ -82,9 +82,10 @@ sbt test
 
 3. Run the application:
 ```bash
-sbt run
+sbt
+> run "What is the weather today?"
 ```
-
+Or set the argument in Intellij and run the Main class.
 ### Docker Deployment
 1. Build the Docker image:
 ```bash

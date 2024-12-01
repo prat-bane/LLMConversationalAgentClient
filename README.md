@@ -189,9 +189,3 @@ The client implements comprehensive error handling for:
 - Invalid responses
 - Resource limitations
 
-
-
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.

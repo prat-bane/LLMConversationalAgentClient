@@ -113,24 +113,7 @@ docker-compose up
 docker-compose -f docker-compose-local.yml up
 ```
 
-## Usage
 
-The client application provides several modes of operation:
-
-1. Single Query Mode:
-```bash
-sbt "run --query 'Your question here'"
-```
-
-2. Interactive Mode:
-```bash
-sbt "run --interactive"
-```
-
-3. Batch Mode (from file):
-```bash
-sbt "run --file path/to/queries.txt"
-```
 
 ## Conversation Logs
 

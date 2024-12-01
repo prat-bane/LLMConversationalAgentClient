@@ -14,8 +14,9 @@ object Main {
   private val logger = LoggerFactory.getLogger(this.getClass)
 
   def main(args: Array[String]): Unit = {
-    if (args.length != 1) {
-      println("Usage: ClientMain <initial-query>")
+    logger.info(s"Received arguments: ${args.mkString(", ")}")
+    if (args.isEmpty) {
+      logger.error("No query provided. Please provide a query as a command line argument")
       System.exit(1)
     }
 

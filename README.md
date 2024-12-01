@@ -98,6 +98,8 @@ sbt
 > run "What is the weather today?"
 ```
 Or set the argument in Intellij and run the Main class.
+
+The 2 components can be run without docker as well. Just set the server url in application.conf of as http://localhost:8080 and start the server application separately on port 8080.
 ### Docker Deployment
 1. Build the Docker image:
 ```bash
@@ -144,18 +146,33 @@ The tests include:
 - Response formatting validation
 
 ## Docker Configuration
-
+To run it locally this was my project structure:
+```
+├── LLMConversationalAgentClient/
+│   └── Dockerfile
+├── LLMConversationalAgent/
+├── LLMDeployment/
+│   ├── docker-compose.yml
+│   └── output/
+```
+The context attribute in the docker-compose file needs to change based on your project structure.
 ### Production Deployment
 The `docker-compose.yml` file configures:
-- Client application container
-- Ollama service integration
-- Network settings for server communication
+- Client application container running locally
+- It doesn't have the server container since the server is running on ec2 in a separate container.
+- The server URL will be the http://your-ec2-hostname:8080
+- ollama will run on http://host.docker.internal:11434
 
 ### Local Development
 The `docker-compose-local.yml` provides:
-- Hot-reloading for development
-- Local volume mounts
-- Debug port mapping
+- The client and server will both run locally on separate containers
+- The URL to set as the server URL for the client will be http://server:8080
+  Commands to run
+  ```
+  docker-compose build
+  docker compose run server
+  docker-compose run client "how to stay happy?"
+  ```
 
 ## Troubleshooting
 

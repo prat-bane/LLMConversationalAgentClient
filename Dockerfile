@@ -14,7 +14,7 @@ RUN sbt update
 COPY src ./src
 
 # Build the application
-RUN sbt clean compile assembly
+RUN sbt clean assembly
 
 # Stage 2: Run the application
 FROM openjdk:11-jre-slim

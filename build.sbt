@@ -29,9 +29,11 @@ libraryDependencies ++= Seq(
 
   //ollama
   "io.github.ollama4j" % "ollama4j" % "1.0.79",
-
+  
   // Testing
   "org.scalatest" %% "scalatest" % "3.2.15" % Test,
+  "org.scalatestplus" %% "mockito-4-6" % "3.2.15.0" % Test,
+  "com.typesafe.akka" %% "akka-actor-testkit-typed" % AkkaVersion % Test,
   "com.typesafe.akka" %% "akka-http-testkit" % AkkaHttpVersion % Test,
   "com.typesafe.akka" %% "akka-stream-testkit" % AkkaVersion % Test
 )

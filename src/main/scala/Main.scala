@@ -14,16 +14,17 @@ object Main {
   private val logger = LoggerFactory.getLogger(this.getClass)
 
   def main(args: Array[String]): Unit = {
-    /*if (args.length != 1) {
+    if (args.length != 1) {
       println("Usage: ClientMain <initial-query>")
       System.exit(1)
-    }*/
+    }
 
     implicit val system: ActorSystem[Nothing] = ActorSystem(Behaviors.empty, "llm-client")
     implicit val executionContext: ExecutionContext = system.executionContext
 
-    val config = ConfigFactory.load()
-    val initialQuery = "How are you?"
+    val config = ConfigFactory.systemEnvironment()          // Load env vars
+      .withFallback(ConfigFactory.load())
+    val initialQuery = args(0)
 
     val clientService = new AWSService(config)
     val conversationManager = new ConversationManager(clientService, config)

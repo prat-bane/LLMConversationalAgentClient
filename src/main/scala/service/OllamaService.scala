@@ -17,10 +17,10 @@ class OllamaService(config: Config)(implicit ec: ExecutionContext) {
   private val maxTurns = config.getInt("conversation.max-turns")
   // Create options with token limits and other parameters
   private val options = new Options(Map[String, AnyRef](
-    "num_predict" -> Integer.valueOf(50),  // Maximum number of tokens to generate
-    "temperature" -> java.lang.Float.valueOf(0.7f),  // Controls randomness (0.0-1.0)
-    "top_k" -> Integer.valueOf(40),  // Limits vocabulary to top K tokens
-    "top_p" -> java.lang.Float.valueOf(0.9f)  // Nucleus sampling threshold
+    "num_predict" -> Integer.valueOf(config.getInt("ollama.num-predict")),  // Maximum number of tokens to generate
+    "temperature" -> java.lang.Double.valueOf(config.getDouble("ollama.temperature")),  // Controls randomness (0.0-1.0)
+    "top_k" -> Integer.valueOf(config.getInt("ollama.top-k")),  // Limits vocabulary to top K tokens
+    "top_p" -> java.lang.Double.valueOf(config.getDouble("ollama.top-p"))  // Nucleus sampling threshold
   ).asJava)
 
   def generateNextQuery(previousResponse: String): Future[String] = {
@@ -39,14 +39,6 @@ class OllamaService(config: Config)(implicit ec: ExecutionContext) {
           throw e
       }
     }
-  }
-
-  def formatQueryForBedrock(ollamaResponse: String): String = {
-    ollamaResponse
-  }
-
-  def shouldContinueConversation(turnCount: Int): Boolean = {
-    turnCount < maxTurns
   }
 
   def shutdown(): Unit = {

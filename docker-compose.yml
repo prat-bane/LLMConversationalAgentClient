@@ -1,0 +1,25 @@
+version: '3'
+services:
+  client:
+    build:
+      context: ../LLMConversationalAgentClient
+      dockerfile: Dockerfile
+    environment:
+      - SERVER_URL=http://ec2-34-226-246-115.compute-1.amazonaws.com:8080
+      - OLLAMA_HOST=http://host.docker.internal:11434
+    ports:
+      - "8081:8081"
+    volumes:
+      - ./output:/app/resources
+     # - conversation-logs:/app/resources  # Map the resources directory to a local logs directory
+    ##depends_on:
+     ## - server
+    networks:
+      - llm-network
+
+networks:
+  llm-network:
+    driver: bridge
+
+#volumes:
+ # conversation-logs:

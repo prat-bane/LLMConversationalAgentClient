@@ -106,14 +106,6 @@ The 2 components can be run without docker as well. Just set the server url in a
 docker build -t llm-client .
 ```
 
-2. Run with Docker Compose:
-```bash
-# For production setup
-docker-compose up
-
-# For local development
-docker-compose -f docker-compose-local.yml up
-```
 
 
 
@@ -132,18 +124,12 @@ Bedrock Response: Machine learning is a branch of artificial intelligence...
 Llama Response: Let me ask about specific applications...
 ----------------------------------------
 ```
-
+A sample output is provided in the repo in the src/main/resources/ directory.
 ## Testing
 Run the test suite using:
 ```bash
 sbt test
 ```
-
-The tests include:
-- Conversation flow testing
-- Ollama integration testing
-- Error handling scenarios
-- Response formatting validation
 
 ## Docker Configuration
 To run it locally this was my project structure:

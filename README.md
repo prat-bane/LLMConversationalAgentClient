@@ -44,26 +44,38 @@ src/
 
 Create `src/main/resources/application.conf`:
 ```hocon
-server {
-  host = "localhost"
-  port = 8080
-  endpoint = "api/v1/chat"
+http {
+  interface = "0.0.0.1"
+  port = 8081
+}
+
+server{
+  url = ${?SERVER_URL}
+  url = "http://localhost:8080" #for local without docker
+ # url = "http://server:8080" for local with docker
+  url = "http://ec2-34-226-246-115.compute-1.amazonaws.com:8080"
+}
+
+llm {
+  maxResponseLength = 1000
+  timeout = 30s
 }
 
 ollama {
-  host = "http://localhost:11434"
-  model = "llama2"
+  host = "http://host.docker.internal:11434" #will be http://localhost:11434 to run it locally without docker
+  model = "llama3.2:1b"
   request-timeout-seconds = 500
+  num-predict = 50
+  temperature = 0.7
+  top-k = 40
+  top-p = 0.9
+
 }
 
 conversation {
-  max-turns = 5
-  initial-prompt = "Hello, how can I assist you today?"
-}
-
-aws {
-  region = "us-east-1"
-  endpoint = "your-server-endpoint"
+  max-turns = 5  # Maximum number of back-and-forth turns in a conversation
+  directory = "src/main/resources" # for local
+  #directory = "/app/resources"  # for local with docker
 }
 ```
 
